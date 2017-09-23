@@ -14,7 +14,7 @@ namespace Joan.Presentation
     public class NewDownloadWindowVm:ReactiveObject,IRequestViewClose
     {
         private string _linkText;
-        private Manager _manager;
+        private JoanService _joanService;
 
         public event EventHandler RequestViewClose;
         public string LinkText
@@ -26,9 +26,9 @@ namespace Joan.Presentation
         public ReactiveCommand AddFileCommand { get; private set; }
     
         
-        public NewDownloadWindowVm(Manager manager)
+        public NewDownloadWindowVm(JoanService joanService)
         {
-            _manager = manager;
+            _joanService = joanService;
             var canOk = true;
             OkCommand = ReactiveCommand.Create(OkAction);
             AddFileCommand = ReactiveCommand.Create(AddFileAction);
@@ -43,11 +43,11 @@ namespace Joan.Presentation
             var items = LinkText.Split('\n').Select(i => i.Trim()).ToArray();
 
             items.Where(i=> webLink.IsMatch(i))
-                .ForEach(async i=>await _manager.DownloadAdd(Download.GetUriDownload(i)));
+                .ForEach(async i=>await _joanService.DownloadAdd(Download.GetUriDownload(i)));
             items.Where(i => torrent.IsMatch(i))
-                .ForEach(async i =>await _manager.DownloadAdd(Download.GetTorrentDownload(File.ReadAllText(i))));
+                .ForEach(async i =>await _joanService.DownloadAdd(Download.GetTorrentDownload(File.ReadAllText(i))));
             items.Where(i => metalink.IsMatch(i))
-                .ForEach(async i => await _manager.DownloadAdd(Download.GetMetaLinkDownload(File.ReadAllText(i))));
+                .ForEach(async i => await _joanService.DownloadAdd(Download.GetMetaLinkDownload(File.ReadAllText(i))));
             RequestViewClose?.Invoke(this,null);
         }
 

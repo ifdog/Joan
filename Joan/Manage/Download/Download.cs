@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Joan.Json.Sub;
 
 namespace Joan.Manage.Download
 {
     public abstract class Download
     {
         public DownloadType Type { get; set; }
+        public RpcStatus Status { get; set; }
 
 
         public static UriDownload GetNewUriDownload(IEnumerable<string> uris)

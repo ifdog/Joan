@@ -7,7 +7,7 @@ namespace Joan.Presentation
 {
     public class MainWindowVm:ReactiveObject
     {
-        private Manager _manager;
+        private JoanService _joanService;
         public ReactiveList<DownloadItemControlVm> Downloads { get; set; }
         public DownloadItemControlVm SelectedControlVm { get; set; }
 
@@ -18,25 +18,25 @@ namespace Joan.Presentation
         public ReactiveCommand SettingCommand { get; private set; }
         public ReactiveCommand DetailCommand { get; private set; }
 
-        public MainWindowVm(Manager manager, Func<NewDownloadWindow> newDownload)
+        public MainWindowVm(JoanService joanService, Func<NewDownloadWindow> newDownload)
         {
             Downloads = new ReactiveList<DownloadItemControlVm>()
             {
                // ChangeTrackingEnabled = true
             };
-            _manager = manager;
+            _joanService = joanService;
             NewCommand = ReactiveCommand.Create(() => newDownload().ShowDialog());
-            PauseCommand = ReactiveCommand.Create(() => _manager.DownloadPause());
+            PauseCommand = ReactiveCommand.Create(() => _joanService.DownloadPause());
 
 
-            _manager.DownloadAdded += _manager_DownloadAdded;
-            _manager.DownloadRemoved += _manager_DownloadRemoved;
-            _manager.DownloadStateUpdated += _manager_DownloadStateUpdated;
+            _joanService.DownloadAdded += _manager_DownloadAdded;
+            _joanService.DownloadRemoved += _manager_DownloadRemoved;
+            _joanService.DownloadStateUpdated += _manager_DownloadStateUpdated;
 
 
         }
 
-        private void _manager_DownloadStateUpdated(object sender, DownloadStateUpdatedEventArgs e)
+        private void _manager_DownloadStateUpdated(object sender, DownloadUpdatedEventArgs e)
         {
             var d = Downloads.First(i => i.Gid == e.Gid);
             d.Status = e.Status.Status;

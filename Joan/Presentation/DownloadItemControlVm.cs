@@ -1,7 +1,7 @@
 ﻿using System;
 using ReactiveUI;
 
-namespace Joan.Manage
+namespace Joan.Presentation
 {
     public class DownloadItemControlVm:ReactiveObject
     {

@@ -164,7 +164,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Exec\Aria2Exe.cs" />
+    <Compile Include="Execute\Aria2Exe.cs" />
     <Compile Include="Http\Post.cs" />
     <Compile Include="Json\Request\RpcRequest.cs" />
     <Compile Include="Json\Response\RpcGidResponse.cs" />
@@ -188,20 +188,15 @@
     <Compile Include="Manage\Download\TorrentDownload.cs" />
     <Compile Include="Manage\Download\UriDownload.cs" />
     <Compile Include="Misc\Errors.cs" />
-    <Compile Include="Misc\Extend.cs" />
+    <Compile Include="Misc\Extensions.cs" />
     <Compile Include="Misc\Utils.cs" />
     <Compile Include="Presentation\ClosableWindow.cs" />
-    <Compile Include="Manage\DownloadAddedEventArgs.cs" />
     <Compile Include="Presentation\DownloadItemControl.xaml.cs">
       <DependentUpon>DownloadItemControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Manage\DownloadItemControlVm.cs" />
-    <Compile Include="Manage\DownloadRemovedEventArgs.cs" />
-    <Compile Include="Manage\DownloadStateUpdatedEventArgs.cs" />
+    <Compile Include="Presentation\DownloadItemControlVm.cs" />
     <Compile Include="Manage\Download\DownloadType.cs" />
     <Compile Include="Presentation\IRequestViewClose.cs" />
-    <Compile Include="Manage\JoanResponse.cs" />
-    <Compile Include="Manage\JoanResponseState.cs" />
     <Compile Include="Presentation\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -213,7 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Presentation\MainWindowVm.cs" />
-    <Compile Include="Manage\Manager.cs" />
+    <Compile Include="Manage\JoanService.cs" />
     <Compile Include="Presentation\NewDownloadWindow.xaml.cs">
       <DependentUpon>NewDownloadWindow.xaml</DependentUpon>
     </Compile>

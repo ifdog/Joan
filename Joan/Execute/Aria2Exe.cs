@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Joan.Misc;
 
-namespace Joan.Exec
+namespace Joan.Execute
 {
     public class Aria2Exe
     {

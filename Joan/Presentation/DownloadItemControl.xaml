@@ -5,10 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Joan"
              xmlns:manage="clr-namespace:Joan.Manage"
+             xmlns:presentation="clr-namespace:Joan.Presentation"
              mc:Ignorable="d" 
              Height="50"
              d:DesignWidth="500"
-             d:DataContext="{d:DesignInstance Type=manage:DownloadItemControlVm, IsDesignTimeCreatable=True }"
+             d:DataContext="{d:DesignInstance Type=presentation:DownloadItemControlVm, IsDesignTimeCreatable=True }"
              >
     
     <Grid>

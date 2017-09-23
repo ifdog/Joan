@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Aria2Exe = Joan.Exec.Aria2Exe;
+using Aria2Exe = Joan.Execute.Aria2Exe;
 using Post = Joan.Http.Post;
 using RpcGidResponse = Joan.Json.Response.RpcGidResponse;
 using RpcMultiStatusResponse = Joan.Json.Response.RpcMultiStatusResponse;
@@ -24,17 +24,6 @@ namespace Joan.Manage
             _token = $"token:{token}";
             _post = new Post(baseUrl, port);
             _exe = new Aria2Exe(aria2ExePath, token, port, debug);
-        }
-
-        public void StartService()
-        {
-            _exe.Start();
-            
-        }
-
-        public void StopService()
-        {
-            
         }
 
         public async Task<RpcGidResponse> AddUri(IEnumerable<string> uris, RpcOptions options = null, int position = int.MaxValue)

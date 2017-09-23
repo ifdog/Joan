@@ -12,14 +12,14 @@ namespace Joan
     public partial class App : Application
     {
         ContainerBuilder _builder;
-        private Manager _manager;
+        private JoanService _joanService;
         public IContainer Container { get; private set; }
 
         public App()
         {
             _builder = new ContainerBuilder();
             _builder.RegisterType<Aria2Serivce>().AsSelf().SingleInstance();
-            _builder.RegisterType<Manager>().AsSelf().SingleInstance();
+            _builder.RegisterType<JoanService>().AsSelf().SingleInstance();
 
             _builder.RegisterType<Presentation.MainWindow>().AsSelf();
             _builder.RegisterType<MainWindowVm>().AsSelf();
@@ -29,7 +29,7 @@ namespace Joan
 
             Container = _builder.Build();
 
-            _manager = Container.Resolve<Manager>();
+            _joanService = Container.Resolve<JoanService>();
            Container.Resolve<Presentation.MainWindow>().Show();
             
         }
@@ -37,12 +37,12 @@ namespace Joan
         protected override void OnStartup(StartupEventArgs e)
         {
             
-            _manager.Start();
+            _joanService.Start();
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
-            //_manager.Stop();
+            //_joanService.Stop();
         }
 
         
