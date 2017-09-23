@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Aria2Rpc;
-using Aria2Rpc.Json.Response;
+using Joan.Manage.Download;
 using RpcGidResponse = Joan.Json.Response.RpcGidResponse;
 
 namespace Joan.Manage
@@ -38,7 +37,7 @@ namespace Joan.Manage
             });
         }
 
-        public async Task<JoanResponse<RpcGidResponse>> DownloadAdd(Download download)
+        public async Task<JoanResponse<RpcGidResponse>> DownloadAdd(Download.Download download)
         {
             var uriDownload = download as UriDownload;
             if (uriDownload != null)
@@ -111,7 +110,7 @@ namespace Joan.Manage
             
         }
 
-        public async Task<JoanResponse<RpcGidResponse>> DownloadRemove(Download download)
+        public async Task<JoanResponse<RpcGidResponse>> DownloadRemove(Download.Download download)
         {
             var response = await _aria2Serivce.Remove(download.Gid);
             if (response.Result == "OK")
@@ -128,7 +127,7 @@ namespace Joan.Manage
             };
         }
 
-        public async Task<JoanResponse<RpcGidResponse>> DownloadPause(Download download)
+        public async Task<JoanResponse<RpcGidResponse>> DownloadPause(Download.Download download)
         {
             return new JoanResponse<RpcGidResponse>
             {
@@ -136,7 +135,7 @@ namespace Joan.Manage
             };
         }
 
-        public async Task<JoanResponse<RpcGidResponse>> DownLoadResume(Download download)
+        public async Task<JoanResponse<RpcGidResponse>> DownLoadResume(Download.Download download)
         {
             return new JoanResponse<RpcGidResponse>
             {

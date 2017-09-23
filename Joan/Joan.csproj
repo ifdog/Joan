@@ -183,6 +183,10 @@
     <Compile Include="Json\Sub\RpcStatus.cs" />
     <Compile Include="Json\Sub\RpcUri.cs" />
     <Compile Include="Manage\Aria2Serivce.cs" />
+    <Compile Include="Manage\Download\Download.cs" />
+    <Compile Include="Manage\Download\MetalinkDownload.cs" />
+    <Compile Include="Manage\Download\TorrentDownload.cs" />
+    <Compile Include="Manage\Download\UriDownload.cs" />
     <Compile Include="Misc\Errors.cs" />
     <Compile Include="Misc\Extend.cs" />
     <Compile Include="Misc\Utils.cs" />
@@ -194,8 +198,7 @@
     <Compile Include="Manage\DownloadItemControlVm.cs" />
     <Compile Include="Manage\DownloadRemovedEventArgs.cs" />
     <Compile Include="Manage\DownloadStateUpdatedEventArgs.cs" />
-    <Compile Include="Manage\DownloadType.cs" />
-    <Compile Include="Misc\Extensions.cs" />
+    <Compile Include="Manage\Download\DownloadType.cs" />
     <Compile Include="Presentation\IRequestViewClose.cs" />
     <Compile Include="Manage\JoanResponse.cs" />
     <Compile Include="Manage\JoanResponseState.cs" />
@@ -245,7 +248,7 @@
     <Folder Include="Aria2\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Exec\aria2c.exe">
+    <Content Include="Resources\aria2c.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

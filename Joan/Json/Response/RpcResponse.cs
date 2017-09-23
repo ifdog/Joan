@@ -1,5 +1,4 @@
-﻿using Aria2Rpc.Json.Sub;
-using RpcError = Joan.Json.Sub.RpcError;
+﻿using Joan.Json.Sub;
 
 namespace Joan.Json.Response
 {

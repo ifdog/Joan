@@ -1,5 +1,4 @@
-﻿using Aria2Rpc.Json.Response;
-using RpcResponse = Joan.Json.Response.RpcResponse;
+﻿using RpcResponse = Joan.Json.Response.RpcResponse;
 
 namespace Joan.Manage
 {

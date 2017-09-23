@@ -1,5 +1,4 @@
 ﻿using System;
-using Aria2Rpc.Json.Sub;
 using RpcStatus = Joan.Json.Sub.RpcStatus;
 
 namespace Joan.Manage

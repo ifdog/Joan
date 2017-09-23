@@ -1,5 +1,4 @@
-﻿using Aria2Rpc.Json.Sub;
-using RpcResult = Joan.Json.Sub.RpcResult;
+﻿using Joan.Json.Sub;
 
 namespace Joan.Json.Response
 {

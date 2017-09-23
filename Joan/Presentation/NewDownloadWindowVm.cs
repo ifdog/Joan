@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Joan.Manage;
+using Joan.Manage.Download;
 using Joan.Misc;
 using Joan.Properties;
 using Microsoft.Win32;
@@ -56,7 +57,7 @@ namespace Joan.Presentation
             {
                 DefaultExt = ".Torrent",
                 Filter =
-                    "Torrnet Files (*.torrent)|*.torrent|MetaLink Files (*.metalink)|*.metalink|text Files (*.txt)|*.txt",
+                    "Torrnet Files (*.torrent)|*.torrent|Metalink Files (*.metalink)|*.metalink|text Files (*.txt)|*.txt",
                 Multiselect = true,
                 CheckFileExists = true,
                 InitialDirectory = Environment.SpecialFolder.DesktopDirectory.ToString(),

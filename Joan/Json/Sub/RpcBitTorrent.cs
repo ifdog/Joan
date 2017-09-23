@@ -1,6 +1,4 @@
-﻿using Aria2Rpc.Json.Sub;
-
-namespace Joan.Json.Sub
+﻿namespace Joan.Json.Sub
 {
     public class RpcBitTorrent
     {

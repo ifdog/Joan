@@ -1,10 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Aria2Rpc.Exec;
-using Aria2Rpc.Http;
-using Aria2Rpc.Json.Request;
-using Aria2Rpc.Json.Response;
-using Aria2Rpc.Json.Sub;
+using Newtonsoft.Json;
 using Aria2Exe = Joan.Exec.Aria2Exe;
 using Post = Joan.Http.Post;
 using RpcGidResponse = Joan.Json.Response.RpcGidResponse;
