@@ -3,7 +3,7 @@ using ReactiveUI;
 
 namespace Joan.Presentation
 {
-    public class DownloadItemControlVm:ReactiveObject
+    public class DownloadItemVm:ReactiveObject
     {
 
 

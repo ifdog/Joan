@@ -3,11 +3,11 @@
 namespace Joan.Presentation
 {
     /// <summary>
-    /// Interaction logic for DownloadItemControl.xaml
+    /// Interaction logic for DownloadItem.xaml
     /// </summary>
-    public partial class DownloadItemControl : UserControl
+    public partial class DownloadItem : UserControl
     {
-        public DownloadItemControl()
+        public DownloadItem()
         {
             InitializeComponent();
         }

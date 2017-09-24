@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Joan.Presentation.DownloadItemControl"
+﻿<UserControl x:Class="Joan.Presentation.DownloadItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              Height="50"
              d:DesignWidth="500"
-             d:DataContext="{d:DesignInstance Type=presentation:DownloadItemControlVm, IsDesignTimeCreatable=True }"
+             d:DataContext="{d:DesignInstance Type=presentation:DownloadItemVm, IsDesignTimeCreatable=True }"
              >
     
     <Grid>

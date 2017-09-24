@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Autofac;
+using Joan.Execute;
 using Joan.Manage;
 using Joan.Presentation;
 using Aria2Serivce = Joan.Manage.Aria2Serivce;
@@ -20,9 +21,9 @@ namespace Joan
             _builder = new ContainerBuilder();
             _builder.RegisterType<Aria2Serivce>().AsSelf().SingleInstance();
             _builder.RegisterType<JoanService>().AsSelf().SingleInstance();
-
-            _builder.RegisterType<Presentation.MainWindow>().AsSelf();
-            _builder.RegisterType<MainWindowVm>().AsSelf();
+            _builder.RegisterType<Aria2Exe>().AsSelf().SingleInstance();
+            _builder.RegisterType<Presentation.JoanMainWindow>().AsSelf();
+            _builder.RegisterType<JoanMainWindowVm>().AsSelf();
             _builder.RegisterType<Presentation.NewDownloadWindow>().AsSelf();
             _builder.RegisterType<NewDownloadWindowVm>().AsSelf();
 
@@ -30,19 +31,18 @@ namespace Joan
             Container = _builder.Build();
 
             _joanService = Container.Resolve<JoanService>();
-           Container.Resolve<Presentation.MainWindow>().Show();
+            Container.Resolve<Presentation.JoanMainWindow>().Show();
+          // Container.Resolve<Presentation.MainWindow>().Show();
             
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
             
-            _joanService.Start();
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
-            //_joanService.Stop();
         }
 
         

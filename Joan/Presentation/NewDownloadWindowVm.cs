@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Joan.Manage;
 using Joan.Manage.Download;
 using Joan.Misc;
@@ -24,30 +26,30 @@ namespace Joan.Presentation
         }
         public ReactiveCommand OkCommand { get; private set; }
         public ReactiveCommand AddFileCommand { get; private set; }
-    
+        public List<string> x;
+
         
         public NewDownloadWindowVm(JoanService joanService)
         {
             _joanService = joanService;
             var canOk = true;
-            OkCommand = ReactiveCommand.Create(OkAction);
+            OkCommand = ReactiveCommand.CreateFromTask(OkAction);
             AddFileCommand = ReactiveCommand.Create(AddFileAction);
         }
 
-        private void OkAction()
+        private async Task OkAction()
         {
             var torrent = new Regex(Resources.TorrentRegExp, RegexOptions.IgnoreCase);
             var webLink = new Regex(Resources.WebLinkRegExp, RegexOptions.IgnoreCase);
             var metalink = new Regex(Resources.MetaLinkRegExp, RegexOptions.IgnoreCase);
-
             var items = LinkText.Split('\n').Select(i => i.Trim()).ToArray();
 
-            items.Where(i=> webLink.IsMatch(i))
-                .ForEach(async i=>await _joanService.DownloadAdd(Download.GetUriDownload(i)));
+            items.Where(i => webLink.IsMatch(i))
+                .ForEach(async i => await _joanService.AddNew(Download.GetnewUriDownload(i)));
             items.Where(i => torrent.IsMatch(i))
-                .ForEach(async i =>await _joanService.DownloadAdd(Download.GetTorrentDownload(File.ReadAllText(i))));
+                .ForEach(async i => await _joanService.AddNew(Download.GetnewUriDownload(i)));
             items.Where(i => metalink.IsMatch(i))
-                .ForEach(async i => await _joanService.DownloadAdd(Download.GetMetaLinkDownload(File.ReadAllText(i))));
+                .ForEach(async i => await _joanService.AddNew(Download.GetnewUriDownload(i)));
             RequestViewClose?.Invoke(this,null);
         }
 

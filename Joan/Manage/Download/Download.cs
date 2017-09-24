@@ -10,6 +10,11 @@ namespace Joan.Manage.Download
         public DownloadType Type { get; set; }
         public RpcStatus Status { get; set; }
 
+        public Download()
+        {
+            Status = new RpcStatus();
+        }
+
 
         public static UriDownload GetNewUriDownload(IEnumerable<string> uris)
         {

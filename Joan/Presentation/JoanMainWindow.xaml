@@ -1,0 +1,45 @@
+﻿<Window x:Class="Joan.Presentation.JoanMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Joan.Presentation"
+        d:DataContext="{d:DesignInstance local:JoanMainWindowVm, d:IsDesignTimeCreatable=True}"
+        mc:Ignorable="d" MinHeight="240" MinWidth="320"
+        Title="Joan for Aria2" Height="480" Width="640">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="0,0,0,0" Background="LightCoral" Orientation="Horizontal">
+            <Button x:Name="NewButton"  Command ="{Binding NewCommand}" Content="New"  HorizontalAlignment="Left" Height="40"  Width="75"/>
+            <Button x:Name="SettingsButton" Command="{Binding SettingCommand}" Content="Settings" HorizontalAlignment="Left" Height="40"  Width="75" />
+            <Button x:Name="AboutButton"  Command="{Binding SettingCommand}" Content="About" HorizontalAlignment="Left" Height="40"  Width="75"/>
+            <Button x:Name="HelpButton" Content="Help" HorizontalAlignment="Left" Height="40"  Width="75"/>
+
+        </StackPanel>
+
+        <local:ListBoxCustom x:Name="DownloadsListBox" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Multiple"
+                 ItemsSource="{Binding Downloads,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                 SelectedItemsList="{Binding SelectedDownloads,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"
+                 Background="SkyBlue">
+            <local:ListBoxCustom.ItemTemplate>
+                <DataTemplate>
+                    <local:DownloadItem/>
+                </DataTemplate>
+            </local:ListBoxCustom.ItemTemplate>
+            <local:ListBoxCustom.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="New" Command="{Binding NewCommand}"/>
+                    <MenuItem Header="Pause" Command="{Binding PauseCommand}"/>
+                    <MenuItem Header="Unpause" Command="{Binding ResumeCommand}"/>
+                    <MenuItem Header="Delete" Command="{Binding DeleteCommand}"/>
+                    <MenuItem Header="Detail" Command="{Binding DetailCommand}"/>
+                    <MenuItem Header="Setting" Command="{Binding SettingCommand}"/>
+                </ContextMenu>
+            </local:ListBoxCustom.ContextMenu>
+        </local:ListBoxCustom>
+
+    </Grid>
+</Window>

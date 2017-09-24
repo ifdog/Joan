@@ -21,7 +21,7 @@ namespace Joan.Manage
             return download;
         }
 
-        public async Task<Download.Download> DownloadAdd(Download.Download download)
+        public async Task<Download.Download> AddNew(Download.Download download)
         {
             if (download is UriDownload uriDownload)
             {
@@ -46,7 +46,7 @@ namespace Joan.Manage
             throw new ArgumentOutOfRangeException();
         }
 
-        public async Task<Download.Download> DownloadRemove(Download.Download download)
+        public async Task<Download.Download> Remove(Download.Download download)
         {
             var response = await _aria2Serivce.Remove(download.Status.Gid);
             if (response.Result == "OK")
@@ -56,7 +56,7 @@ namespace Joan.Manage
             return null;
         }
 
-        public async Task<Download.Download> DownloadPause(Download.Download download)
+        public async Task<Download.Download> Pause(Download.Download download)
         {
             var response = await _aria2Serivce.Pause(download.Status.Gid);
             if (response.Result == "OK")
@@ -66,7 +66,7 @@ namespace Joan.Manage
             return null;
         }
 
-        public async Task<Download.Download> DownLoadResume(Download.Download download)
+        public async Task<Download.Download> Resume(Download.Download download)
         {
             var response =await _aria2Serivce.Unpause(download.Status.Gid);
             if (response.Result == "OK")
